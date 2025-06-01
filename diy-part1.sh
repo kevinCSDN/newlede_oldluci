@@ -23,9 +23,12 @@ sed -i 's|^#src-git luci https://github.com/coolsnowwolf/luci$|src-git luci http
 sed -i 's|^src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-24.10$|#src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-24.10|' feeds.conf.default
 
 
-./scripts/feeds update -a && rm -rf feeds/luci/applications/luci-app-mosdns && rm -rf feeds/packages/net/{alist,adguardhome,mosdns,smartdns}
+./scripts/feeds update -a && rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+./scripts/feeds install -a 
 #git clone https://github.com/kenzok8/golang -b 1.23 feeds/packages/lang/golang
 
 #克隆passwall环境插件
